@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		 "strict": true,
+		 "strict": false,
 		 "module": "commonjs",
 		 "target": "es6",
 		 "esModuleInterop": true,
@@ -8,6 +8,8 @@
 		 "rootDir": "src",
 		 "outDir": "dist/js",
 		 "noEmitOnError": true,
+		 "noImplicitAny": false,
+		 "types": ["@types/chrome"],
 		 "typeRoots": [ "node_modules/@types" ]
 	}
 }
