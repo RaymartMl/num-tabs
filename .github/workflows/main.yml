@@ -1,0 +1,23 @@
+name: Create a release for num-tabs package
+
+on:
+  push:
+      branches: [ $default-branch ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@3
+    - uses: actions/setup-node@v3
+    - name: Create a Release
+      uses: elgohr/Github-Release-Action@v4
+      env:
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+      with:
+        node-version: '14.x'
+        title: numtabs
+    - run: yarn install
+    - run: yarn build
+
