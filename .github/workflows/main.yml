@@ -12,8 +12,7 @@ jobs:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
     - name: Get version
-      id: vars
-      run: echo ::set-output name=tag::${{ github.ref_name }}
+      run: export Version=$env:GITHUB_REF_NAME
     - name: Package extension for release
       env:
         RELEASE_VERSION: ${{ github.ref_name }}
