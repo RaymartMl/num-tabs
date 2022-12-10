@@ -6,7 +6,7 @@
 		 "esModuleInterop": true,
 		 "sourceMap": true,
 		 "rootDir": "src",
-		 "outDir": "dist/js",
+		 "outDir": "num-tabs/js",
 		 "noEmitOnError": true,
 		 "noImplicitAny": false,
 		 "types": ["@types/chrome"],
