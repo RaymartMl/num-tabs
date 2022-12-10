@@ -12,12 +12,20 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
-    - name: Create a Release
-      uses: elgohr/Github-Release-Action@v4
+    - name: Package extension for release
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+      run: |
+        yarn install
+        yarn build
+        zip -r num-tabs.zip num-tabs/
+    - name: Publish release
+      uses: marvinpinto/action-automatic-releases@latest
+      env:
+        RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
       with:
-        title: ${{ github.sha }}
-    - run: yarn install
-    - run: yarn build
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        prerelease: false
+        files: |
+          num-tabs.zip
 
