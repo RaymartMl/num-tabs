@@ -11,6 +11,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
+    - name: Get version
+      id: vars
+      run: echo ::set-output name=tag::${{ github.ref_name }}
     - name: Package extension for release
       env:
         RELEASE_VERSION: ${{ github.ref_name }}
