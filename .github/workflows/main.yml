@@ -9,12 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
     - name: Package extension for release
       env:
-        RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+        RELEASE_VERSION: ${{ github.ref_name }}
       run: |
         yarn install
         yarn build
@@ -22,7 +21,7 @@ jobs:
     - name: Publish release
       uses: marvinpinto/action-automatic-releases@latest
       env:
-        RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+        RELEASE_VERSION: ${{ github.ref_name }}
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         prerelease: false
