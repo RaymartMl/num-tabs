@@ -3,7 +3,8 @@ name: Create a release for num-tabs package
 on:
   workflow_dispatch:
   push:
-      branches: [ $default-branch ]
+      branches: 
+        - ${{ github.event.repository.default_branch }}
 
 jobs:
   build:
