@@ -17,8 +17,8 @@ jobs:
       env:
         RELEASE_VERSION: ${{ github.ref_name }}
       run: |
-        yarn install
-        yarn build
+        npm ci
+        npm run build
         zip -r num-tabs.zip num-tabs/
     - name: Publish release
       uses: marvinpinto/action-automatic-releases@latest
