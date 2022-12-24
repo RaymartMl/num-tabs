@@ -6,9 +6,11 @@ on:
       branches: [master]
   pull_request:
       branches: [master]
+      types: [closed]
 
 jobs:
-  build:
+  merge_job:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
