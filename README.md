@@ -1,7 +1,7 @@
 # num-tabs
 A manifest v3 chrome extension to add a number prefix to tabs. Useful for keyboard navigation using `ctrl+{tab number}` or `alt+{tab number}`.
 
-![Demo](docs/demo.gif)
+![Demo](/docs/demo.gif)
 
 
 ## Download
